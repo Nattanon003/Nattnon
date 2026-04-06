@@ -135,6 +135,28 @@
       margin-top: 18px;
     }
 
+    .status-bar {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .status-chip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+      color: #e2e8f0;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center;
+    }
+
     .btn {
       appearance: none;
       border: 0;
@@ -180,6 +202,12 @@
       color: #fff;
       background: linear-gradient(135deg, #8b5cf6, #7c3aed);
       box-shadow: 0 10px 24px rgba(124,58,237,.24);
+    }
+
+    .btn-contact {
+      color: #fff;
+      background: linear-gradient(135deg, #1877f2, #0f5fd1);
+      box-shadow: 0 10px 24px rgba(24,119,242,.24);
     }
 
     .btn-copy {
@@ -445,7 +473,8 @@
       .hashtags-toolbar,
       .tag-actions,
       .package-list,
-      .redeem-box {
+      .redeem-box,
+      .status-bar {
         grid-template-columns: repeat(2, 1fr);
       }
 
@@ -479,6 +508,15 @@
         <a class="btn btn-game" href="https://apps.apple.com/th/app/garena-rov-the-mildars-rise/id1150337432" target="_blank" rel="noopener noreferrer">
           🎮 เข้าเกม RoV (iOS)
         </a>
+
+        <a class="btn btn-contact" href="https://www.facebook.com/share/1FeLm9FXGZ/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">
+          💬 ติดต่อ
+        </a>
+      </div>
+
+      <div class="status-bar">
+        <div class="status-chip" id="totalTagsChip"># ทั้งหมด 0 อัน</div>
+        <div class="status-chip" id="updatedDateChip">อัปเดตเมื่อ -</div>
       </div>
     </section>
 
@@ -621,6 +659,8 @@
   <div id="toast" class="toast">คัดลอกแล้ว</div>
 
   <script>
+    const LAST_UPDATED = "7 เมษายน 2026";
+
     const tagGroups = [
       {
         label: "2 คลิปเริ่มต้น",
@@ -715,6 +755,21 @@
       location.reload();
     }
 
+    function countRealHashtags() {
+      let total = 0;
+      tagGroups.forEach(group => {
+        group.items.forEach(item => {
+          if (item.trim().startsWith("#")) total++;
+        });
+      });
+      return total;
+    }
+
+    function updateStatusBar() {
+      document.getElementById("totalTagsChip").textContent = `# ทั้งหมด ${countRealHashtags()} อัน`;
+      document.getElementById("updatedDateChip").textContent = `อัปเดตเมื่อ ${LAST_UPDATED}`;
+    }
+
     function renderTags() {
       tagsGrid.innerHTML = "";
       let globalCounter = 1;
@@ -737,7 +792,7 @@
           const label = document.createElement("div");
           label.className = "tag-label";
           label.innerHTML = `
-            แฮชแท็กที่ ${globalCounter}
+            ${item.trim().startsWith("#") ? `แฮชแท็กที่ ${globalCounter}` : "ข้อความแจ้งเตือน"}
             <span class="copied-mark ${isCopied ? "show" : ""}">✅ คัดลอกแล้ว</span>
           `;
 
@@ -762,9 +817,13 @@
           card.appendChild(actions);
           tagsGrid.appendChild(card);
 
-          globalCounter++;
+          if (item.trim().startsWith("#")) {
+            globalCounter++;
+          }
         });
       });
+
+      updateStatusBar();
     }
 
     renderTags();
