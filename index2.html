@@ -152,6 +152,10 @@
       background:linear-gradient(135deg, var(--red), #dc2626);
     }
 
+    .btn-reset{
+      background:linear-gradient(135deg, var(--gold), #d97706);
+    }
+
     .empty{
       text-align:center;
       color:var(--muted);
@@ -203,6 +207,10 @@
       margin-top:12px;
     }
 
+    .extra-actions{
+      margin-top:12px;
+    }
+
     .toast{
       position:fixed;
       left:50%;
@@ -251,6 +259,9 @@
         <button class="btn btn-save" onclick="saveNote()">💾 บันทึกข้อความ</button>
         <button class="btn btn-clear" onclick="clearInput()">🗑️ ล้างช่องพิมพ์</button>
       </div>
+      <div class="extra-actions">
+        <button class="btn btn-reset" onclick="resetDefault()">♻️ รีเซ็ตกลับค่าเริ่มต้น 13 อัน</button>
+      </div>
     </section>
 
     <section class="card">
@@ -267,7 +278,23 @@
     const notesList = document.getElementById("notesList");
     const toast = document.getElementById("toast");
 
-    let notes = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+    const defaultNotes = [
+      { id: 1, text: "#RoV #คลิปRoV #rovth", createdAt: "ค่าเริ่มต้น" },
+      { id: 2, text: "#RoV #RoVเป็นเกมตลก #คลิปRoV", createdAt: "ค่าเริ่มต้น" },
+      { id: 3, text: "#RoV #ควิกแชทนี้พี่จัดให้ #หยุดโลกด้วยเสียง #GildurPASULOL", createdAt: "ค่าเริ่มต้น" },
+      { id: 4, text: "#RoV #Flowborn #ฮีโร่ใหม่RoV #FlowbornPreheat", createdAt: "ค่าเริ่มต้น" },
+      { id: 5, text: "#RoV #RoVเป็นเกมตลก #rovth", createdAt: "ค่าเริ่มต้น" },
+      { id: 6, text: "#RoV #RoVเป็นเกมตลก #fpy", createdAt: "ค่าเริ่มต้น" },
+      { id: 7, text: "#RoV #RoVเป็นเกมตลก #trending", createdAt: "ค่าเริ่มต้น" },
+      { id: 8, text: "#RoV #RoVเป็นเกมตลก #เล่นRoV", createdAt: "ค่าเริ่มต้น" },
+      { id: 9, text: "#RoV #RoVเป็นเกมตลก #RoVเกมภาพสวย", createdAt: "ค่าเริ่มต้น" },
+      { id: 10, text: "#RoV #rovth #คลิปRoV", createdAt: "ค่าเริ่มต้น" },
+      { id: 11, text: "#RoV #rovth #RoVThailand", createdAt: "ค่าเริ่มต้น" },
+      { id: 12, text: "#RoV #ควิกแชทนี้พี่จัดให้ #TeamKongInRoV", createdAt: "ค่าเริ่มต้น" },
+      { id: 13, text: "#RoV #RoVเรียกเพื่อนกลับบ้าน #CallbackRoV", createdAt: "ค่าเริ่มต้น" }
+    ];
+
+    let notes = JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultNotes;
     const copiedSet = new Set();
 
     function showToast(message) {
@@ -332,6 +359,14 @@
       showToast("ลบข้อความแล้ว");
     }
 
+    function resetDefault() {
+      localStorage.removeItem(STORAGE_KEY);
+      notes = [...defaultNotes];
+      copiedSet.clear();
+      renderNotes();
+      showToast("รีเซ็ตกลับค่าเริ่มต้นแล้ว");
+    }
+
     function renderNotes() {
       if (notes.length === 0) {
         notesList.innerHTML = `<div class="empty">ยังไม่มีข้อความที่บันทึกไว้</div>`;
@@ -342,7 +377,7 @@
         <div class="note-card">
           <div class="note-top">
             <span class="note-badge">ข้อความที่ ${notes.length - index}</span>
-            <span class="note-badge">${note.createdAt}</span>
+            <span class="note-badge">${escapeHtml(note.createdAt || "-")}</span>
           </div>
 
           <p class="note-text">${escapeHtml(note.text)}</p>
@@ -367,6 +402,10 @@
       const div = document.createElement("div");
       div.textContent = text;
       return div.innerHTML;
+    }
+
+    if (!localStorage.getItem(STORAGE_KEY)) {
+      persist();
     }
 
     renderNotes();
