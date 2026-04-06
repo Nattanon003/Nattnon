@@ -10,10 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #060816;
-      --bg-soft: #0b1120;
-      --card: rgba(16, 24, 48, 0.92);
-      --card-2: rgba(13, 19, 38, 0.9);
       --text: #f8fafc;
       --muted: #a5b4cc;
       --line: rgba(255,255,255,0.08);
@@ -22,8 +18,8 @@
       --green: #22c55e;
       --orange: #f59e0b;
       --pink: #ec4899;
+      --purple: #8b5cf6;
       --shadow: 0 18px 45px rgba(0,0,0,.35);
-      --radius: 20px;
     }
 
     * {
@@ -140,7 +136,12 @@
       font-size: 14px;
       font-weight: 600;
       cursor: pointer;
-      transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+      transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease, filter .18s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
 
     .btn:active {
@@ -157,6 +158,41 @@
       color: #e2e8f0;
       background: linear-gradient(135deg, rgba(56,189,248,.18), rgba(59,130,246,.18));
       border: 1px solid rgba(56,189,248,.2);
+    }
+
+    .btn-drive {
+      color: #fff;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      box-shadow: 0 10px 24px rgba(34,197,94,.22);
+    }
+
+    .btn-game {
+      color: #fff;
+      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+      box-shadow: 0 10px 24px rgba(124,58,237,.24);
+    }
+
+    .btn-copy {
+      background: linear-gradient(135deg, rgba(34,197,94,.95), rgba(16,185,129,.92));
+      color: white;
+      box-shadow: 0 10px 22px rgba(16,185,129,.18);
+    }
+
+    .btn-copy.copied {
+      background: linear-gradient(135deg, #16a34a, #22c55e);
+      box-shadow: 0 10px 22px rgba(34,197,94,.24);
+    }
+
+    .btn-copy-all {
+      background: linear-gradient(135deg, rgba(245,158,11,.96), rgba(249,115,22,.96));
+      color: #fff;
+      box-shadow: 0 12px 24px rgba(249,115,22,.16);
+    }
+
+    .btn-jump {
+      background: linear-gradient(135deg, rgba(56,189,248,.9), rgba(59,130,246,.88));
+      color: #fff;
+      box-shadow: 0 12px 24px rgba(59,130,246,.15);
     }
 
     .grid {
@@ -197,6 +233,13 @@
       color: var(--muted);
       font-size: 14px;
       line-height: 1.7;
+    }
+
+    .quick-links {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 14px;
     }
 
     .steps {
@@ -277,6 +320,21 @@
       font-size: 14px;
     }
 
+    .redeem-box {
+      display: grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .redeem-item {
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(139,92,246,.13), rgba(59,130,246,.10));
+      border: 1px solid rgba(255,255,255,.08);
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
     .hashtags-toolbar {
       display: grid;
       grid-template-columns: 1fr;
@@ -310,6 +368,19 @@
       margin-bottom: 12px;
     }
 
+    .copied-mark {
+      display: none;
+      align-items: center;
+      gap: 6px;
+      margin-left: 8px;
+      color: #86efac;
+      font-weight: 700;
+    }
+
+    .copied-mark.show {
+      display: inline-flex;
+    }
+
     .tag-text {
       margin: 0;
       padding: 0;
@@ -327,24 +398,6 @@
       margin-top: 12px;
     }
 
-    .btn-copy {
-      background: linear-gradient(135deg, rgba(34,197,94,.95), rgba(16,185,129,.92));
-      color: white;
-      box-shadow: 0 10px 22px rgba(16,185,129,.18);
-    }
-
-    .btn-copy-all {
-      background: linear-gradient(135deg, rgba(245,158,11,.96), rgba(249,115,22,.96));
-      color: #fff;
-      box-shadow: 0 12px 24px rgba(249,115,22,.16);
-    }
-
-    .btn-jump {
-      background: linear-gradient(135deg, rgba(56,189,248,.9), rgba(59,130,246,.88));
-      color: #fff;
-      box-shadow: 0 12px 24px rgba(59,130,246,.15);
-    }
-
     .divider-title {
       display: flex;
       align-items: center;
@@ -353,6 +406,7 @@
       font-size: 18px;
       font-weight: 700;
       color: #fde68a;
+      flex-wrap: wrap;
     }
 
     .small-note {
@@ -405,7 +459,8 @@
       .top-actions,
       .hashtags-toolbar,
       .tag-actions,
-      .package-list {
+      .package-list,
+      .quick-links {
         grid-template-columns: repeat(2, 1fr);
       }
 
@@ -425,9 +480,20 @@
         วิธีทำกิจกรรม Creator Next Gen (RoV) แบบเข้าใจง่าย
         ใช้งานบนมือถือได้สะดวก พร้อมแฮชแท็กที่กดคัดลอกได้ทันที
       </p>
+
       <div class="top-actions">
         <button class="btn btn-primary" onclick="scrollToSection('hashtags-section')">📋 ไปที่แฮชแท็ก</button>
         <button class="btn btn-secondary" onclick="copyAllTags()">คัดลอกแฮชแท็กทั้งหมด</button>
+      </div>
+
+      <div class="quick-links">
+        <a class="btn btn-drive" href="https://drive.google.com/drive/folders/1W6AoO8n0hJET67D7ZVQY3zuMcz7U_q9E" target="_blank" rel="noopener noreferrer">
+          🎬 คลิปทั้งหมด
+        </a>
+
+        <a class="btn btn-game" id="rovGameButton" href="https://rov.in.th/" target="_blank" rel="noopener noreferrer">
+          🎮 เข้าเกม RoV
+        </a>
       </div>
     </section>
 
@@ -484,7 +550,7 @@
               <div class="step-title">เข้าไปกดเพิ่มคลิปในกิจกรรม</div>
             </div>
             <ul class="list">
-              <li>กดเข้าปุ่มทำภารกิจสีเขียวของแต่ละอันแล้วกดตรง “ความคืบหน้า &amp; วีดีโอ”</li>
+              <li>กดเข้าปุ่มทำภารกิจสีเขียวของแต่ละอันแล้วกดตรง “ความคืบหน้า & วีดีโอ”</li>
               <li>กด “เพิ่มคลิปอัตโนมัติ” ให้ครบทุกคลิป หากคลิปไหนเพิ่มไม่ได้ให้แจ้งพ่อค้าก่อน หรือลงคลิปใหม่ไปก่อนได้เลย</li>
               <li>รอพ่อค้าปั้มวิว ถ้าปั้มแล้วหรือกำลังปั้มจะแจ้งลูกค้าทันที</li>
               <li>กดรับรางวัลให้ครบทุกอัน</li>
@@ -523,6 +589,28 @@
       </section>
     </div>
 
+    <section class="section-card" style="margin-top:16px;">
+      <h2 class="section-title"><span class="icon">🎁</span>แนะนำการแลกคูปอง</h2>
+      <p class="section-desc">แนะนำการกดแลกคูปองตามจำนวนที่ซื้อ เพื่อให้แลกได้ตรงและง่ายขึ้น</p>
+
+      <div class="redeem-box">
+        <div class="redeem-item">
+          <strong>ซื้อ 800 คูปอง</strong><br>
+          ควรแลก <strong>500 คูปอง 1 รอบ</strong> + <strong>300 คูปอง 1 รอบ</strong>
+        </div>
+
+        <div class="redeem-item">
+          <strong>ซื้อ 1000 คูปอง</strong><br>
+          ควรแลก <strong>500 คูปอง 2 รอบ</strong>
+        </div>
+
+        <div class="redeem-item">
+          <strong>ซื้อ 1100 คูปอง</strong><br>
+          ควรแลก <strong>500 คูปอง 2 รอบ</strong> + <strong>100 คูปอง 1 รอบ</strong>
+        </div>
+      </div>
+    </section>
+
     <section class="section-card" id="hashtags-section" style="margin-top:16px;">
       <h2 class="section-title"><span class="icon">#</span>แฮชแท็กทั้งหมด</h2>
       <p class="section-desc">กดคัดลอกได้ทีละชุด หรือคัดลอกทั้งหมดในครั้งเดียว</p>
@@ -537,7 +625,7 @@
       <div class="tags-grid" id="tagsGrid"></div>
 
       <div class="footer">
-        ใช้งานได้เลยบนมือถือ · เหมาะสำหรับเปิดส่งลูกค้า หรือใช้อ่านขั้นตอนแบบเข้าใจง่าย
+        สถานะคัดลอกจะแสดงเฉพาะเครื่องและหน้าเว็บของคนที่กดเท่านั้น · รีเฟรชแล้วจะหายอัตโนมัติ
       </div>
     </section>
   </div>
@@ -598,14 +686,8 @@
     const tagsGrid = document.getElementById("tagsGrid");
     const toast = document.getElementById("toast");
 
-    function escapeHtml(text) {
-      return text
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-    }
+    const copiedItems = new Set();
+    let copiedAll = false;
 
     function showToast(message) {
       toast.textContent = message;
@@ -616,10 +698,9 @@
       }, 1800);
     }
 
-    async function copyText(text, successMessage = "คัดลอกแล้ว") {
+    async function writeClipboard(text) {
       try {
         await navigator.clipboard.writeText(text);
-        showToast(successMessage);
       } catch (e) {
         const area = document.createElement("textarea");
         area.value = text;
@@ -627,11 +708,17 @@
         area.select();
         document.execCommand("copy");
         document.body.removeChild(area);
-        showToast(successMessage);
       }
     }
 
-    function copyAllTags() {
+    async function copyItem(text, key) {
+      await writeClipboard(text);
+      copiedItems.add(key);
+      renderTags();
+      showToast("คัดลอกเรียบร้อยแล้ว");
+    }
+
+    async function copyAllTags() {
       const allLines = [];
       tagGroups.forEach(group => {
         if (group.label) allLines.push(group.label);
@@ -640,7 +727,11 @@
         }
         allLines.push("");
       });
-      copyText(allLines.join("\n"), "คัดลอกแฮชแท็กทั้งหมดแล้ว");
+
+      await writeClipboard(allLines.join("\n"));
+      copiedAll = true;
+      showToast("คัดลอกแฮชแท็กทั้งหมดแล้ว");
+      updateCopyAllButtons();
     }
 
     function scrollToSection(id) {
@@ -648,26 +739,37 @@
       if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
     }
 
+    function updateCopyAllButtons() {
+      const buttons = document.querySelectorAll(".btn-copy-all");
+      buttons.forEach(btn => {
+        btn.innerHTML = copiedAll ? "✅ คัดลอกแฮชแท็กทั้งหมดแล้ว" : "📋 คัดลอกแฮชแท็กทั้งหมด";
+      });
+    }
+
     function renderTags() {
       tagsGrid.innerHTML = "";
 
-      tagGroups.forEach(group => {
+      tagGroups.forEach((group, groupIndex) => {
         const groupTitle = document.createElement("div");
         groupTitle.className = "divider-title";
         groupTitle.textContent = group.label;
         tagsGrid.appendChild(groupTitle);
 
-        if (group.items.length === 0) {
-          return;
-        }
+        if (group.items.length === 0) return;
 
-        group.items.forEach((item, index) => {
+        group.items.forEach((item, itemIndex) => {
+          const key = `${groupIndex}-${itemIndex}`;
+          const isCopied = copiedItems.has(key);
+
           const card = document.createElement("div");
           card.className = "tag-card";
 
           const label = document.createElement("div");
           label.className = "tag-label";
-          label.textContent = `ชุดที่ ${index + 1}`;
+          label.innerHTML = `
+            ชุดที่ ${itemIndex + 1}
+            <span class="copied-mark ${isCopied ? "show" : ""}">✅ คัดลอกแล้ว</span>
+          `;
 
           const text = document.createElement("pre");
           text.className = "tag-text";
@@ -677,9 +779,12 @@
           actions.className = "tag-actions";
 
           const button = document.createElement("button");
-          button.className = "btn btn-copy";
-          button.textContent = item.startsWith("#") ? "คัดลอกชุดนี้" : "คัดลอกข้อความนี้";
-          button.addEventListener("click", () => copyText(item, "คัดลอกเรียบร้อยแล้ว"));
+          button.className = `btn btn-copy ${isCopied ? "copied" : ""}`;
+          button.textContent = isCopied
+            ? "✅ คัดลอกแล้ว"
+            : (item.startsWith("#") ? "คัดลอกชุดนี้" : "คัดลอกข้อความนี้");
+
+          button.addEventListener("click", () => copyItem(item, key));
 
           actions.appendChild(button);
           card.appendChild(label);
@@ -688,9 +793,19 @@
           tagsGrid.appendChild(card);
         });
       });
+
+      updateCopyAllButtons();
     }
 
     renderTags();
+
+    /*
+      ปุ่มเข้าเกม RoV:
+      - ตอนนี้ตั้ง fallback เป็น https://rov.in.th/
+      - ถ้าคุณมี deep link / scheme ที่ใช้ได้จริงของเกม
+        ให้เปลี่ยน href ของ #rovGameButton ได้เลย เช่น:
+        document.getElementById("rovGameButton").href = "mygame://open";
+    */
   </script>
 </body>
 </html>
