@@ -1,1 +1,190 @@
-hello
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creator RoV</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Prompt', sans-serif;
+  background: linear-gradient(180deg, #0f172a, #020617);
+  color: white;
+}
+
+.container {
+  padding: 15px;
+  max-width: 500px;
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+  color: gold;
+}
+
+.card {
+  background: #1e293b;
+  padding: 15px;
+  border-radius: 12px;
+  margin: 10px 0;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: #22c55e;
+  color: white;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.copyAll {
+  background: #f59e0b;
+}
+
+.adminBtn {
+  background: #3b82f6;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  margin: 5px 0;
+}
+
+.hidden {
+  display: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Creator RoV</h1>
+
+<!-- ขั้นตอน -->
+<h3>📌 ขั้นตอน</h3>
+<div id="steps"></div>
+
+<!-- แฮชแท็ก -->
+<h3>📌 แฮชแท็ก</h3>
+<button class="copyAll" onclick="copyAll()">คัดลอกทั้งหมด</button>
+<div id="hashtags"></div>
+
+<!-- ปุ่ม admin -->
+<button class="adminBtn" onclick="toggleAdmin()">⚙️ Admin</button>
+
+<!-- Admin Panel -->
+<div id="admin" class="hidden">
+
+<h3>➕ เพิ่มขั้นตอน</h3>
+<input id="stepTitle" placeholder="หัวข้อ">
+<textarea id="stepDesc" placeholder="รายละเอียด"></textarea>
+<button onclick="addStep()">เพิ่มขั้นตอน</button>
+
+<h3>➕ เพิ่มแฮชแท็ก</h3>
+<textarea id="tagInput" placeholder="#RoV #rovth"></textarea>
+<button onclick="addTag()">เพิ่มแฮชแท็ก</button>
+
+</div>
+
+</div>
+
+<script>
+
+let data = JSON.parse(localStorage.getItem("rovData")) || {
+  steps: [
+    {title: "เชื่อม TikTok", desc: "เชื่อมบัญชี TikTok กับเกมก่อนเริ่ม"}
+  ],
+  hashtags: [
+    "#RoV #คลิปRoV #rovth"
+  ]
+};
+
+function save() {
+  localStorage.setItem("rovData", JSON.stringify(data));
+  render();
+}
+
+function render() {
+
+  let stepsHTML = "";
+  data.steps.forEach((s, i) => {
+    stepsHTML += `
+      <div class="card">
+        <h4>${s.title}</h4>
+        <p>${s.desc}</p>
+        <button onclick="deleteStep(${i})">ลบ</button>
+      </div>
+    `;
+  });
+  document.getElementById("steps").innerHTML = stepsHTML;
+
+  let tagHTML = "";
+  data.hashtags.forEach((t, i) => {
+    tagHTML += `
+      <div class="card">
+        <p>${t}</p>
+        <button onclick="copyText('${t}')">คัดลอก</button>
+        <button onclick="deleteTag(${i})">ลบ</button>
+      </div>
+    `;
+  });
+  document.getElementById("hashtags").innerHTML = tagHTML;
+}
+
+function addStep() {
+  data.steps.push({
+    title: stepTitle.value,
+    desc: stepDesc.value
+  });
+  stepTitle.value = "";
+  stepDesc.value = "";
+  save();
+}
+
+function addTag() {
+  data.hashtags.push(tagInput.value);
+  tagInput.value = "";
+  save();
+}
+
+function deleteStep(i) {
+  data.steps.splice(i,1);
+  save();
+}
+
+function deleteTag(i) {
+  data.hashtags.splice(i,1);
+  save();
+}
+
+function copyText(text) {
+  navigator.clipboard.writeText(text);
+  alert("คัดลอกแล้ว!");
+}
+
+function copyAll() {
+  let all = data.hashtags.join("\n");
+  navigator.clipboard.writeText(all);
+  alert("คัดลอกทั้งหมดแล้ว!");
+}
+
+function toggleAdmin() {
+  document.getElementById("admin").classList.toggle("hidden");
+}
+
+render();
+
+</script>
+
+</body>
+</html>
