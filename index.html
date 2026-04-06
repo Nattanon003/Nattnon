@@ -135,28 +135,6 @@
       margin-top: 18px;
     }
 
-    .status-bar {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-      margin-top: 18px;
-    }
-
-    .status-chip {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 12px 14px;
-      border-radius: 16px;
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.08);
-      color: #e2e8f0;
-      font-size: 14px;
-      font-weight: 600;
-      text-align: center;
-    }
-
     .btn {
       appearance: none;
       border: 0;
@@ -357,6 +335,33 @@
       font-size: 14px;
     }
 
+    .info-box-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .info-box {
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: linear-gradient(180deg, rgba(19,27,52,.92), rgba(11,17,33,.92));
+      padding: 16px;
+    }
+
+    .info-box-title {
+      font-size: 13px;
+      color: #a5b4cc;
+      margin-bottom: 8px;
+    }
+
+    .info-box-value {
+      font-size: 20px;
+      font-weight: 700;
+      color: #f8fafc;
+      line-height: 1.5;
+    }
+
     .divider-title {
       display: flex;
       align-items: center;
@@ -474,7 +479,7 @@
       .tag-actions,
       .package-list,
       .redeem-box,
-      .status-bar {
+      .info-box-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
@@ -512,11 +517,6 @@
         <a class="btn btn-contact" href="https://www.facebook.com/share/1FeLm9FXGZ/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">
           💬 ติดต่อ
         </a>
-      </div>
-
-      <div class="status-bar">
-        <div class="status-chip" id="totalTagsChip"># ทั้งหมด 0 อัน</div>
-        <div class="status-chip" id="updatedDateChip">อัปเดตเมื่อ -</div>
       </div>
     </section>
 
@@ -630,6 +630,18 @@
         <div class="redeem-item">
           <strong>ซื้อ 1100 คูปอง</strong><br>
           ควรแลก <strong>500 คูปอง 2 รอบ</strong> + <strong>100 คูปอง 1 รอบ</strong>
+        </div>
+      </div>
+
+      <div class="info-box-grid">
+        <div class="info-box">
+          <div class="info-box-title">จำนวนแฮชแท็กทั้งหมด</div>
+          <div class="info-box-value" id="totalTagsChip"># ทั้งหมด 0 อัน</div>
+        </div>
+
+        <div class="info-box">
+          <div class="info-box-title">อัปเดตล่าสุด</div>
+          <div class="info-box-value" id="updatedDateChip">อัปเดตเมื่อ -</div>
         </div>
       </div>
     </section>
