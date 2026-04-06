@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>กิจกรรม Creator RoV | By FB : Naa Non</title>
-  <meta name="description" content="วิธีทำกิจกรรม Creator Next Gen (RoV) แบบเข้าใจง่าย พร้อมแฮชแท็กคัดลอกได้ทันที" />
+  <meta name="description" content="วิธีทำกิจกรรม Creator Next Gen (RoV) แบบเข้าใจง่าย พร้อมแฮชแท็กคัดลอกได้ทีละชุด" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -120,10 +120,18 @@
       line-height: 1.7;
     }
 
-    .top-actions {
+    .top-actions,
+    .quick-links,
+    .hashtags-toolbar,
+    .tag-actions,
+    .redeem-box {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 10px;
+    }
+
+    .top-actions,
+    .quick-links {
       margin-top: 18px;
     }
 
@@ -142,6 +150,8 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
+      color: #fff;
+      width: 100%;
     }
 
     .btn:active {
@@ -173,26 +183,23 @@
     }
 
     .btn-copy {
-      background: linear-gradient(135deg, rgba(34,197,94,.95), rgba(16,185,129,.92));
-      color: white;
-      box-shadow: 0 10px 22px rgba(16,185,129,.18);
+      background: linear-gradient(135deg, rgba(59,130,246,.96), rgba(37,99,235,.92));
+      box-shadow: 0 10px 22px rgba(59,130,246,.18);
     }
 
     .btn-copy.copied {
-      background: linear-gradient(135deg, #16a34a, #22c55e);
-      box-shadow: 0 10px 22px rgba(34,197,94,.24);
-    }
-
-    .btn-copy-all {
-      background: linear-gradient(135deg, rgba(245,158,11,.96), rgba(249,115,22,.96));
-      color: #fff;
-      box-shadow: 0 12px 24px rgba(249,115,22,.16);
+      background: linear-gradient(135deg, rgba(34,197,94,.95), rgba(16,185,129,.92));
+      box-shadow: 0 10px 22px rgba(16,185,129,.18);
     }
 
     .btn-jump {
       background: linear-gradient(135deg, rgba(56,189,248,.9), rgba(59,130,246,.88));
-      color: #fff;
       box-shadow: 0 12px 24px rgba(59,130,246,.15);
+    }
+
+    .btn-refresh {
+      background: linear-gradient(135deg, rgba(245,158,11,.96), rgba(249,115,22,.96));
+      box-shadow: 0 12px 24px rgba(249,115,22,.16);
     }
 
     .grid {
@@ -233,13 +240,6 @@
       color: var(--muted);
       font-size: 14px;
       line-height: 1.7;
-    }
-
-    .quick-links {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-      margin-top: 14px;
     }
 
     .steps {
@@ -320,12 +320,6 @@
       font-size: 14px;
     }
 
-    .redeem-box {
-      display: grid;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
     .redeem-item {
       padding: 12px 14px;
       border-radius: 16px;
@@ -335,11 +329,15 @@
       font-size: 14px;
     }
 
-    .hashtags-toolbar {
-      display: grid;
-      grid-template-columns: 1fr;
+    .divider-title {
+      display: flex;
+      align-items: center;
       gap: 10px;
-      margin-bottom: 14px;
+      margin: 6px 0 2px;
+      font-size: 18px;
+      font-weight: 700;
+      color: #fde68a;
+      flex-wrap: wrap;
     }
 
     .tags-grid {
@@ -391,24 +389,6 @@
       font-size: 15px;
     }
 
-    .tag-actions {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-      margin-top: 12px;
-    }
-
-    .divider-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin: 6px 0 2px;
-      font-size: 18px;
-      font-weight: 700;
-      color: #fde68a;
-      flex-wrap: wrap;
-    }
-
     .small-note {
       margin-top: 14px;
       padding: 12px 14px;
@@ -426,6 +406,10 @@
       color: var(--muted);
       font-size: 13px;
       line-height: 1.8;
+    }
+
+    .bottom-tools {
+      margin-top: 16px;
     }
 
     .toast {
@@ -457,10 +441,11 @@
       }
 
       .top-actions,
+      .quick-links,
       .hashtags-toolbar,
       .tag-actions,
       .package-list,
-      .quick-links {
+      .redeem-box {
         grid-template-columns: repeat(2, 1fr);
       }
 
@@ -478,12 +463,12 @@
       <h1><span class="gold">Creator RoV</span><br>By FB : Naa Non</h1>
       <p class="subtitle">
         วิธีทำกิจกรรม Creator Next Gen (RoV) แบบเข้าใจง่าย
-        ใช้งานบนมือถือได้สะดวก พร้อมแฮชแท็กที่กดคัดลอกได้ทันที
+        ใช้งานบนมือถือได้สะดวก พร้อมแฮชแท็กที่กดคัดลอกได้ทีละชุด
       </p>
 
       <div class="top-actions">
         <button class="btn btn-primary" onclick="scrollToSection('hashtags-section')">📋 ไปที่แฮชแท็ก</button>
-        <button class="btn btn-secondary" onclick="copyAllTags()">คัดลอกแฮชแท็กทั้งหมด</button>
+        <button class="btn btn-secondary" onclick="scrollToSection('redeem-section')">🎁 แนะนำการแลกคูปอง</button>
       </div>
 
       <div class="quick-links">
@@ -491,8 +476,8 @@
           🎬 คลิปทั้งหมด
         </a>
 
-        <a class="btn btn-game" id="rovGameButton" href="https://rov.in.th/" target="_blank" rel="noopener noreferrer">
-          🎮 เข้าเกม RoV
+        <a class="btn btn-game" href="https://apps.apple.com/th/app/garena-rov-the-mildars-rise/id1150337432" target="_blank" rel="noopener noreferrer">
+          🎮 เข้าเกม RoV (iOS)
         </a>
       </div>
     </section>
@@ -550,7 +535,7 @@
               <div class="step-title">เข้าไปกดเพิ่มคลิปในกิจกรรม</div>
             </div>
             <ul class="list">
-              <li>กดเข้าปุ่มทำภารกิจสีเขียวของแต่ละอันแล้วกดตรง “ความคืบหน้า & วีดีโอ”</li>
+              <li>กดเข้าปุ่มทำภารกิจสีเขียวของแต่ละอันแล้วกดตรง “ความคืบหน้า &amp; วีดีโอ”</li>
               <li>กด “เพิ่มคลิปอัตโนมัติ” ให้ครบทุกคลิป หากคลิปไหนเพิ่มไม่ได้ให้แจ้งพ่อค้าก่อน หรือลงคลิปใหม่ไปก่อนได้เลย</li>
               <li>รอพ่อค้าปั้มวิว ถ้าปั้มแล้วหรือกำลังปั้มจะแจ้งลูกค้าทันที</li>
               <li>กดรับรางวัลให้ครบทุกอัน</li>
@@ -589,7 +574,7 @@
       </section>
     </div>
 
-    <section class="section-card" style="margin-top:16px;">
+    <section class="section-card" id="redeem-section" style="margin-top:16px;">
       <h2 class="section-title"><span class="icon">🎁</span>แนะนำการแลกคูปอง</h2>
       <p class="section-desc">แนะนำการกดแลกคูปองตามจำนวนที่ซื้อ เพื่อให้แลกได้ตรงและง่ายขึ้น</p>
 
@@ -613,10 +598,9 @@
 
     <section class="section-card" id="hashtags-section" style="margin-top:16px;">
       <h2 class="section-title"><span class="icon">#</span>แฮชแท็กทั้งหมด</h2>
-      <p class="section-desc">กดคัดลอกได้ทีละชุด หรือคัดลอกทั้งหมดในครั้งเดียว</p>
+      <p class="section-desc">กดคัดลอกได้ทีละชุดเท่านั้น</p>
 
       <div class="hashtags-toolbar">
-        <button class="btn btn-copy-all" onclick="copyAllTags()">📋 คัดลอกแฮชแท็กทั้งหมด</button>
         <button class="btn btn-jump" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">⬆️ กลับขึ้นบน</button>
       </div>
 
@@ -626,6 +610,10 @@
 
       <div class="footer">
         สถานะคัดลอกจะแสดงเฉพาะเครื่องและหน้าเว็บของคนที่กดเท่านั้น · รีเฟรชแล้วจะหายอัตโนมัติ
+      </div>
+
+      <div class="bottom-tools">
+        <button class="btn btn-refresh" onclick="refreshPageWithoutLosingData()">🔄 รีเซ็ตเว็บไซต์ (ข้อมูลไม่หาย)</button>
       </div>
     </section>
   </div>
@@ -685,9 +673,7 @@
 
     const tagsGrid = document.getElementById("tagsGrid");
     const toast = document.getElementById("toast");
-
     const copiedItems = new Set();
-    let copiedAll = false;
 
     function showToast(message) {
       toast.textContent = message;
@@ -718,36 +704,20 @@
       showToast("คัดลอกเรียบร้อยแล้ว");
     }
 
-    async function copyAllTags() {
-      const allLines = [];
-      tagGroups.forEach(group => {
-        if (group.label) allLines.push(group.label);
-        if (group.items.length) {
-          group.items.forEach(item => allLines.push(item));
-        }
-        allLines.push("");
-      });
-
-      await writeClipboard(allLines.join("\n"));
-      copiedAll = true;
-      showToast("คัดลอกแฮชแท็กทั้งหมดแล้ว");
-      updateCopyAllButtons();
-    }
-
     function scrollToSection(id) {
       const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
     }
 
-    function updateCopyAllButtons() {
-      const buttons = document.querySelectorAll(".btn-copy-all");
-      buttons.forEach(btn => {
-        btn.innerHTML = copiedAll ? "✅ คัดลอกแฮชแท็กทั้งหมดแล้ว" : "📋 คัดลอกแฮชแท็กทั้งหมด";
-      });
+    function refreshPageWithoutLosingData() {
+      location.reload();
     }
 
     function renderTags() {
       tagsGrid.innerHTML = "";
+      let globalCounter = 1;
 
       tagGroups.forEach((group, groupIndex) => {
         const groupTitle = document.createElement("div");
@@ -767,7 +737,7 @@
           const label = document.createElement("div");
           label.className = "tag-label";
           label.innerHTML = `
-            ชุดที่ ${itemIndex + 1}
+            แฮชแท็กที่ ${globalCounter}
             <span class="copied-mark ${isCopied ? "show" : ""}">✅ คัดลอกแล้ว</span>
           `;
 
@@ -791,21 +761,13 @@
           card.appendChild(text);
           card.appendChild(actions);
           tagsGrid.appendChild(card);
+
+          globalCounter++;
         });
       });
-
-      updateCopyAllButtons();
     }
 
     renderTags();
-
-    /*
-      ปุ่มเข้าเกม RoV:
-      - ตอนนี้ตั้ง fallback เป็น https://rov.in.th/
-      - ถ้าคุณมี deep link / scheme ที่ใช้ได้จริงของเกม
-        ให้เปลี่ยน href ของ #rovGameButton ได้เลย เช่น:
-        document.getElementById("rovGameButton").href = "mygame://open";
-    */
   </script>
 </body>
 </html>
