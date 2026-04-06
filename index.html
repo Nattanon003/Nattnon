@@ -634,12 +634,16 @@
         </div>
       </div>
 
-      <div class="status-card">
-        <div class="status-card-title">สถานะแฮชแท็ก</div>
-        <div class="status-card-total" id="totalTagsChip"># ทั้งหมด 0 อัน</div>
-        <div class="status-card-update" id="updatedDateChip">อัปเดตเมื่อ -</div>
-      </div>
     </section>
+
+    <section class="section-card" id="status-section" style="margin-top:16px;">
+  <h2 class="section-title"><span class="icon">📊</span>สถานะแฮชแท็ก</h2>
+
+  <div class="status-card">
+    <div class="status-card-total" id="totalTagsChip"># ทั้งหมดตอนนี้ 0 อัน</div>
+    <div class="status-card-update" id="updatedDateChip">อัปเดตเมื่อ -</div>
+  </div>
+</section>
 
     <section class="section-card" id="hashtags-section" style="margin-top:16px;">
       <h2 class="section-title"><span class="icon">#</span>แฮชแท็กทั้งหมด</h2>
@@ -773,8 +777,8 @@
     }
 
     function updateStatusBar() {
-      document.getElementById("totalTagsChip").textContent = `# ทั้งหมด ${countRealHashtags()} อัน`;
-      document.getElementById("updatedDateChip").textContent = `อัปเดตเมื่อ ${LAST_UPDATED}`;
+      document.getElementById("totalTagsChip").textContent = `# ทั้งหมดตอนนี้ ${countRealHashtags()}`;
+      document.getElementById("updatedDateChip").textContent = `อัปเดตล่าสุดเมื่อ ${LAST_UPDATED}`;
     }
 
     function renderTags() {
