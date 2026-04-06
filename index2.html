@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>กิจกรรม Creator RoV | By FB : Naa Non</title>
-  <meta name="description" content="วิธีทำกิจกรรม Creator Next Gen (RoV) แบบเข้าใจง่าย พร้อมแฮชแท็กคัดลอกได้ทีละชุด" />
+  <title>บันทึกข้อความของฉัน</title>
+  <meta name="description" content="เว็บบันทึกข้อความส่วนตัว พร้อมปุ่มคัดลอก ใช้งานง่ายบนมือถือ" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -17,8 +17,7 @@
       --cyan: #38bdf8;
       --green: #22c55e;
       --orange: #f59e0b;
-      --pink: #ec4899;
-      --purple: #8b5cf6;
+      --red: #ef4444;
       --shadow: 0 18px 45px rgba(0,0,0,.35);
     }
 
@@ -120,99 +119,13 @@
       line-height: 1.7;
     }
 
-    .top-actions,
-    .quick-links,
-    .hashtags-toolbar,
-    .tag-actions,
-    .redeem-box {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-    }
-
-    .top-actions,
-    .quick-links {
-      margin-top: 18px;
-    }
-
-    .btn {
-      appearance: none;
-      border: 0;
-      border-radius: 14px;
-      padding: 13px 15px;
-      font-family: inherit;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease, filter .18s ease;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      color: #fff;
-      width: 100%;
-    }
-
-    .btn:active {
-      transform: scale(.98);
-    }
-
-    .btn-primary {
-      color: #08111f;
-      background: linear-gradient(135deg, #f7c948, #ffd96b);
-      box-shadow: 0 10px 24px rgba(247,201,72,.18);
-    }
-
-    .btn-secondary {
-      color: #e2e8f0;
-      background: linear-gradient(135deg, rgba(56,189,248,.18), rgba(59,130,246,.18));
-      border: 1px solid rgba(56,189,248,.2);
-    }
-
-    .btn-drive {
-      color: #fff;
-      background: linear-gradient(135deg, #22c55e, #16a34a);
-      box-shadow: 0 10px 24px rgba(34,197,94,.22);
-    }
-
-    .btn-game {
-      color: #fff;
-      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
-      box-shadow: 0 10px 24px rgba(124,58,237,.24);
-    }
-
-    .btn-copy {
-      background: linear-gradient(135deg, rgba(59,130,246,.96), rgba(37,99,235,.92));
-      box-shadow: 0 10px 22px rgba(59,130,246,.18);
-    }
-
-    .btn-copy.copied {
-      background: linear-gradient(135deg, rgba(34,197,94,.95), rgba(16,185,129,.92));
-      box-shadow: 0 10px 22px rgba(16,185,129,.18);
-    }
-
-    .btn-jump {
-      background: linear-gradient(135deg, rgba(56,189,248,.9), rgba(59,130,246,.88));
-      box-shadow: 0 12px 24px rgba(59,130,246,.15);
-    }
-
-    .btn-refresh {
-      background: linear-gradient(135deg, rgba(245,158,11,.96), rgba(249,115,22,.96));
-      box-shadow: 0 12px 24px rgba(249,115,22,.16);
-    }
-
-    .grid {
-      display: grid;
-      gap: 16px;
-    }
-
     .section-card {
       border: 1px solid var(--line);
       background: linear-gradient(180deg, rgba(12,18,34,.96), rgba(7,12,26,.96));
       border-radius: 24px;
       padding: 18px;
       box-shadow: var(--shadow);
+      margin-bottom: 16px;
     }
 
     .section-title {
@@ -242,117 +155,107 @@
       line-height: 1.7;
     }
 
-    .steps {
-      display: grid;
-      gap: 12px;
-    }
-
-    .step {
-      padding: 14px;
+    textarea {
+      width: 100%;
+      min-height: 140px;
+      border: 1px solid rgba(255,255,255,.08);
+      outline: none;
+      resize: vertical;
       border-radius: 18px;
+      padding: 14px 15px;
       background: linear-gradient(180deg, rgba(18,26,49,.88), rgba(10,15,30,.88));
-      border: 1px solid rgba(255,255,255,.07);
-    }
-
-    .step-head {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    .step-num {
-      flex: 0 0 auto;
-      width: 34px;
-      height: 34px;
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-      font-size: 16px;
-      font-weight: 700;
-      color: #08111f;
-      background: linear-gradient(135deg, #f7c948, #ffd96b);
-    }
-
-    .step-title {
-      font-weight: 600;
-      font-size: 16px;
-    }
-
-    .list {
-      margin: 0;
-      padding-left: 18px;
-      color: #dbe7f6;
+      color: #fff;
+      font-family: inherit;
+      font-size: 15px;
       line-height: 1.8;
-      font-size: 14px;
     }
 
-    .list li + li {
-      margin-top: 4px;
+    textarea::placeholder {
+      color: #90a0bb;
     }
 
-    .package-box {
-      margin-top: 12px;
-      padding: 14px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, rgba(34,197,94,.12), rgba(247,201,72,.08));
-      border: 1px solid rgba(255,255,255,.08);
-    }
-
-    .package-title {
-      margin: 0 0 8px;
-      color: #bbf7d0;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .package-list {
+    .form-actions {
       display: grid;
-      gap: 8px;
       grid-template-columns: 1fr;
-    }
-
-    .package-item {
-      padding: 10px 12px;
-      border-radius: 14px;
-      background: rgba(3,7,18,.28);
-      border: 1px solid rgba(255,255,255,.06);
-      font-size: 14px;
-    }
-
-    .redeem-item {
-      padding: 12px 14px;
-      border-radius: 16px;
-      background: linear-gradient(135deg, rgba(139,92,246,.13), rgba(59,130,246,.10));
-      border: 1px solid rgba(255,255,255,.08);
-      line-height: 1.8;
-      font-size: 14px;
-    }
-
-    .divider-title {
-      display: flex;
-      align-items: center;
       gap: 10px;
-      margin: 6px 0 2px;
-      font-size: 18px;
-      font-weight: 700;
-      color: #fde68a;
-      flex-wrap: wrap;
+      margin-top: 12px;
     }
 
-    .tags-grid {
+    .btn {
+      appearance: none;
+      border: 0;
+      border-radius: 14px;
+      padding: 13px 15px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease, filter .18s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: #fff;
+    }
+
+    .btn:active {
+      transform: scale(.98);
+    }
+
+    .btn-save {
+      background: linear-gradient(135deg, rgba(34,197,94,.95), rgba(16,185,129,.92));
+      box-shadow: 0 10px 22px rgba(16,185,129,.18);
+    }
+
+    .btn-clear {
+      background: linear-gradient(135deg, rgba(239,68,68,.96), rgba(220,38,38,.92));
+      box-shadow: 0 10px 22px rgba(239,68,68,.16);
+    }
+
+    .btn-reset {
+      background: linear-gradient(135deg, rgba(245,158,11,.96), rgba(249,115,22,.96));
+      box-shadow: 0 12px 24px rgba(249,115,22,.16);
+    }
+
+    .btn-refresh {
+      background: linear-gradient(135deg, rgba(56,189,248,.96), rgba(37,99,235,.92));
+      box-shadow: 0 10px 22px rgba(59,130,246,.18);
+      width: 100%;
+    }
+
+    .list-wrap {
       display: grid;
       gap: 12px;
     }
 
-    .tag-card {
+    .empty-state {
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px dashed rgba(255,255,255,.12);
+      text-align: center;
+      color: var(--muted);
+      background: rgba(255,255,255,.02);
+      font-size: 14px;
+    }
+
+    .note-card {
       border-radius: 18px;
       border: 1px solid rgba(255,255,255,.08);
       background: linear-gradient(180deg, rgba(19,27,52,.92), rgba(11,17,33,.92));
       padding: 14px;
     }
 
-    .tag-label {
+    .note-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .note-label {
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -363,14 +266,12 @@
       border: 1px solid rgba(255,255,255,.06);
       padding: 7px 10px;
       border-radius: 999px;
-      margin-bottom: 12px;
     }
 
     .copied-mark {
       display: none;
       align-items: center;
       gap: 6px;
-      margin-left: 8px;
       color: #86efac;
       font-weight: 700;
     }
@@ -379,7 +280,16 @@
       display: inline-flex;
     }
 
-    .tag-text {
+    .note-time {
+      font-size: 12px;
+      color: #9fb0c9;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.05);
+      padding: 7px 10px;
+      border-radius: 999px;
+    }
+
+    .note-text {
       margin: 0;
       padding: 0;
       white-space: pre-wrap;
@@ -389,21 +299,35 @@
       font-size: 15px;
     }
 
-    .small-note {
+    .note-actions {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .btn-copy {
+      background: linear-gradient(135deg, rgba(59,130,246,.96), rgba(37,99,235,.92));
+      box-shadow: 0 10px 22px rgba(59,130,246,.18);
+    }
+
+    .btn-copy.copied {
+      background: linear-gradient(135deg, rgba(34,197,94,.95), rgba(16,185,129,.92));
+      box-shadow: 0 10px 22px rgba(16,185,129,.18);
+    }
+
+    .btn-delete {
+      background: linear-gradient(135deg, rgba(239,68,68,.96), rgba(220,38,38,.92));
+      box-shadow: 0 10px 22px rgba(239,68,68,.16);
+    }
+
+    .footer-note {
       margin-top: 14px;
       padding: 12px 14px;
       border-radius: 16px;
-      background: rgba(236,72,153,.08);
-      border: 1px solid rgba(236,72,153,.16);
-      color: #fbcfe8;
-      font-size: 13px;
-      line-height: 1.8;
-    }
-
-    .footer {
-      margin-top: 18px;
-      text-align: center;
-      color: var(--muted);
+      background: rgba(56,189,248,.08);
+      border: 1px solid rgba(56,189,248,.16);
+      color: #c7e9ff;
       font-size: 13px;
       line-height: 1.8;
     }
@@ -440,18 +364,9 @@
         padding: 24px 18px 100px;
       }
 
-      .top-actions,
-      .quick-links,
-      .hashtags-toolbar,
-      .tag-actions,
-      .package-list,
-      .redeem-box {
+      .form-actions,
+      .note-actions {
         grid-template-columns: repeat(2, 1fr);
-      }
-
-      .grid {
-        grid-template-columns: 1.1fr .9fr;
-        align-items: start;
       }
     }
   </style>
@@ -459,221 +374,70 @@
 <body>
   <div class="container">
     <section class="hero">
-      <div class="eyebrow">🎮 กิจกรรม Creator RoV</div>
-      <h1><span class="gold">Creator RoV</span><br>By FB : Naa Non</h1>
+      <div class="eyebrow">📝 เว็บบันทึกข้อความส่วนตัว</div>
+      <h1><span class="gold">บันทึกข้อความ</span><br>พร้อมปุ่มคัดลอก</h1>
       <p class="subtitle">
-        วิธีทำกิจกรรม Creator Next Gen (RoV) แบบเข้าใจง่าย
-        ใช้งานบนมือถือได้สะดวก พร้อมแฮชแท็กที่กดคัดลอกได้ทีละชุด
+        ใช้เก็บแฮชแท็ก แคปชัน หรือข้อความอะไรก็ได้
+        ข้อมูลจะถูกบันทึกไว้ในเครื่องของคุณด้วย localStorage
       </p>
+    </section>
 
-      <div class="top-actions">
-        <button class="btn btn-primary" onclick="scrollToSection('hashtags-section')">📋 ไปที่แฮชแท็ก</button>
-        <button class="btn btn-secondary" onclick="scrollToSection('redeem-section')">🎁 แนะนำการแลกคูปอง</button>
-      </div>
+    <section class="section-card">
+      <h2 class="section-title"><span class="icon">✍️</span>เพิ่มข้อความใหม่</h2>
+      <p class="section-desc">พิมพ์ข้อความที่ต้องการ แล้วกดบันทึก ข้อความใหม่จะไปอยู่ล่างสุดอัตโนมัติ</p>
 
-      <div class="quick-links">
-        <a class="btn btn-drive" href="https://drive.google.com/drive/folders/1W6AoO8n0hJET67D7ZVQY3zuMcz7U_q9E" target="_blank" rel="noopener noreferrer">
-          🎬 คลิปทั้งหมด
-        </a>
+      <textarea id="noteInput" placeholder="พิมพ์ข้อความที่ต้องการบันทึกตรงนี้..."></textarea>
 
-        <a class="btn btn-game" href="https://apps.apple.com/th/app/garena-rov-the-mildars-rise/id1150337432" target="_blank" rel="noopener noreferrer">
-          🎮 เข้าเกม RoV (iOS)
-        </a>
+      <div class="form-actions">
+        <button class="btn btn-save" onclick="saveNote()">💾 บันทึกข้อความ</button>
+        <button class="btn btn-clear" onclick="clearInput()">🗑️ ล้างช่องพิมพ์</button>
+        <button class="btn btn-reset" onclick="resetDefault()" style="grid-column: 1 / -1;">♻️ รีเซ็ตกลับค่าเริ่มต้น 13 อัน</button>
       </div>
     </section>
 
-    <div class="grid">
-      <section class="section-card">
-        <h2 class="section-title"><span class="icon">✅</span>วิธีทำกิจกรรม</h2>
-        <p class="section-desc">ทำตามนี้ทีละข้อ เพื่อความถูกต้องและทำกิจกรรมได้ครบ</p>
+    <section class="section-card">
+      <h2 class="section-title"><span class="icon">📋</span>ข้อความที่บันทึกไว้</h2>
+      <p class="section-desc">กดคัดลอกหรือลบได้ทีละรายการ</p>
 
-        <div class="steps">
-          <article class="step">
-            <div class="step-head">
-              <div class="step-num">1</div>
-              <div class="step-title">เชื่อมบัญชี TikTok กับเกม</div>
-            </div>
-            <ul class="list">
-              <li>เข้าไปที่ “ตั้งค่าบัญชี” ในกิจกรรมในเกม Creator Next gen!</li>
-              <li>กดเชื่อม TikTok ให้เรียบร้อยก่อนเริ่ม ( เลือก Account ที่ต้องการลงคลิป )</li>
-            </ul>
-          </article>
+      <div id="notesList" class="list-wrap"></div>
 
-          <article class="step">
-            <div class="step-head">
-              <div class="step-num">2</div>
-              <div class="step-title">ลงคลิป + ใส่แฮชแท็ก</div>
-            </div>
-            <ul class="list">
-              <li>ลงคลิปตามจำนวนที่กำหนด</li>
-              <li>ใส่แฮชแท็กให้ครบทุกคลิปและถูกต้อง (ก็อปวางได้เลย)</li>
-            </ul>
-
-            <div class="package-box">
-              <p class="package-title">📌 จำนวนที่ต้องลง</p>
-              <div class="package-list">
-                <div class="package-item">800 คูปอง = 11 คลิป</div>
-                <div class="package-item">1000 คูปอง = 16 คลิป</div>
-                <div class="package-item">1100 คูปอง = 19 คลิป</div>
-              </div>
-            </div>
-          </article>
-
-          <article class="step">
-            <div class="step-head">
-              <div class="step-num">3</div>
-              <div class="step-title">ส่งลิ้งช่อง TikTok ให้พ่อค้าในแชท</div>
-            </div>
-            <ul class="list">
-              <li>ส่งลิ้งโปรไฟล์ หรือ ลิ้งคลิปที่ลงอย่างน้อย 1 คลิป</li>
-            </ul>
-          </article>
-
-          <article class="step">
-            <div class="step-head">
-              <div class="step-num">4</div>
-              <div class="step-title">เข้าไปกดเพิ่มคลิปในกิจกรรม</div>
-            </div>
-            <ul class="list">
-              <li>กดเข้าปุ่มทำภารกิจสีเขียวของแต่ละอันแล้วกดตรง “ความคืบหน้า &amp; วีดีโอ”</li>
-              <li>กด “เพิ่มคลิปอัตโนมัติ” ให้ครบทุกคลิป หากคลิปไหนเพิ่มไม่ได้ให้แจ้งพ่อค้าก่อน หรือลงคลิปใหม่ไปก่อนได้เลย</li>
-              <li>รอพ่อค้าปั้มวิว ถ้าปั้มแล้วหรือกำลังปั้มจะแจ้งลูกค้าทันที</li>
-              <li>กดรับรางวัลให้ครบทุกอัน</li>
-            </ul>
-          </article>
-
-          <article class="step">
-            <div class="step-head">
-              <div class="step-num">5</div>
-              <div class="step-title">แลกรางวัล</div>
-            </div>
-            <ul class="list">
-              <li>เมื่อรับแต้มครบทุกอันแล้วให้กดไปที่ “ แลกรางวัล ”</li>
-              <li>คลิกที่ คูปอง แล้วแลกคูปองได้เลย 🎁</li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <section class="section-card">
-        <h2 class="section-title"><span class="icon">🎥</span>วิธีลงคลิป</h2>
-        <p class="section-desc">ขั้นตอนลงคลิปแบบเรียงลำดับ ทำตามนี้ได้เลย</p>
-
-        <ul class="list">
-          <li>กดลงคลิปที่ได้จากผม ก่อนลงให้ใส่แฮชแท็กตามด้านล่างนี้ เรียงลงมาเลย *** แนะนำ ให้ก็อปวางเพื่อความถูกต้อง ( สามารถลงทั้งหมดทีเดียวได้เลยขอ # ไม่ผิดพอ )</li>
-          <li>เมื่อลงแล้วรอคลิป 30-60 นาที</li>
-          <li>ส่งลิ้งให้ผมได้เลย 1-2 ลิ้ง หรือเป็นลิ้งโปรไฟล์ TikTok</li>
-          <li>เข้าไปเพิ่มคลิป แล้วส่งรูปให้ผมเพื่อความถูกต้องในการปั้ม</li>
-          <li>รอผมปั้มตามคิว</li>
-          <li>เข้าไปรีเฟรซรับของได้เลย ( อาจจะต้องรออัพเดตเอาแต้มเพิ่มจากในถ้วยเพื่อแลกคูปอง )</li>
-        </ul>
-
-        <div class="small-note">
-          แนะนำให้คัดลอกแฮชแท็กจากเว็บนี้ไปวางตรง ๆ เพื่อความถูกต้อง และลดโอกาสพิมพ์ผิด
-        </div>
-      </section>
-    </div>
-
-    <section class="section-card" id="redeem-section" style="margin-top:16px;">
-      <h2 class="section-title"><span class="icon">🎁</span>แนะนำการแลกคูปอง</h2>
-      <p class="section-desc">แนะนำการกดแลกคูปองตามจำนวนที่ซื้อ เพื่อให้แลกได้ตรงและง่ายขึ้น</p>
-
-      <div class="redeem-box">
-        <div class="redeem-item">
-          <strong>ซื้อ 800 คูปอง</strong><br>
-          ควรแลก <strong>500 คูปอง 1 รอบ</strong> + <strong>300 คูปอง 1 รอบ</strong>
-        </div>
-
-        <div class="redeem-item">
-          <strong>ซื้อ 1000 คูปอง</strong><br>
-          ควรแลก <strong>500 คูปอง 2 รอบ</strong>
-        </div>
-
-        <div class="redeem-item">
-          <strong>ซื้อ 1100 คูปอง</strong><br>
-          ควรแลก <strong>500 คูปอง 2 รอบ</strong> + <strong>100 คูปอง 1 รอบ</strong>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-card" id="hashtags-section" style="margin-top:16px;">
-      <h2 class="section-title"><span class="icon">#</span>แฮชแท็กทั้งหมด</h2>
-      <p class="section-desc">กดคัดลอกได้ทีละชุดเท่านั้น</p>
-
-      <div class="hashtags-toolbar">
-        <button class="btn btn-jump" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">⬆️ กลับขึ้นบน</button>
-      </div>
-
-      <div class="divider-title">—————- เริ่มต้นทำกิจกรรม ——————-</div>
-
-      <div class="tags-grid" id="tagsGrid"></div>
-
-      <div class="footer">
-        สถานะคัดลอกจะแสดงเฉพาะเครื่องและหน้าเว็บของคนที่กดเท่านั้น · รีเฟรชแล้วจะหายอัตโนมัติ
+      <div class="footer-note">
+        สถานะ ✅ คัดลอกแล้ว จะแสดงเฉพาะตอนที่คุณเปิดหน้านี้อยู่เท่านั้น
+        แต่ข้อความที่บันทึกไว้จะยังอยู่ในเครื่องจนกว่าจะลบหรือรีเซ็ต
       </div>
 
       <div class="bottom-tools">
-        <button class="btn btn-refresh" onclick="refreshPageWithoutLosingData()">🔄 รีเซ็ตเว็บไซต์ (ข้อมูลไม่หาย)</button>
+        <button class="btn btn-refresh" onclick="refreshPage()">🔄 รีเฟรชเว็บไซต์</button>
       </div>
     </section>
   </div>
 
-  <div id="toast" class="toast">คัดลอกแล้ว</div>
+  <div id="toast" class="toast">บันทึกแล้ว</div>
 
   <script>
-    const tagGroups = [
-      {
-        label: "2 คลิปเริ่มต้น",
-        items: [
-          "#RoV #คลิปRoV #rovth",
-          "#RoV #RoVเป็นเกมตลก #คลิปRoV"
-        ]
-      },
-      {
-        label: "ภารกิจพิเศษ",
-        items: [
-          "#RoV #ควิกแชทนี้พี่จัดให้ #หยุดโลกด้วยเสียง #GildurPASULOL",
-          "#RoV #Flowborn #ฮีโร่ใหม่RoV #FlowbornPreheat",
-          "#RoV #RoVเป็นเกมตลก #rovth",
-          "#RoV #RoVเป็นเกมตลก #fpy",
-          "#RoV #RoVเป็นเกมตลก #trending",
-          "#RoV #RoVเป็นเกมตลก #เล่นRoV",
-          "#RoV #RoVเป็นเกมตลก #RoVเกมภาพสวย",
-          "#RoV #rovth #คลิปRoV",
-          "#RoV #rovth #RoVThailand"
-        ]
-      },
-      {
-        label: "——— ครบแล้ว สำหรับคนทำ 800 ปอง ( 11 คลิป ) ———",
-        items: []
-      },
-      {
-        label: "เริ่มต่อสำหรับคนทำ 1000 ปอง ( 16 คลิป )",
-        items: [
-          "#RoV #ควิกแชทนี้พี่จัดให้ #TeamKongInRoV",
-          "#RoV #RoVเรียกเพื่อนกลับบ้าน #CallbackRoV",
-          "รออัพเดต Coming soon…."
-        ]
-      },
-      {
-        label: "——— ครบแล้ว สำหรับคนทำ 1000 ปอง ( 16 คลิป ) ———",
-        items: []
-      },
-      {
-        label: "เริ่มต่อสำหรับคนทำ 1100 ปอง ( 19 คลิป )",
-        items: [
-          "รออัพเดต Coming soon…."
-        ]
-      },
-      {
-        label: "——— ครบแล้ว สำหรับคนทำ 1100 ปอง ( 19 คลิป ) ———",
-        items: []
-      }
+    const STORAGE_KEY = "my_saved_notes_modern_v2";
+    const input = document.getElementById("noteInput");
+    const notesList = document.getElementById("notesList");
+    const toast = document.getElementById("toast");
+
+    const defaultNotes = [
+      { id: 1, text: "#RoV #คลิปRoV #rovth", createdAt: "ค่าเริ่มต้น" },
+      { id: 2, text: "#RoV #RoVเป็นเกมตลก #คลิปRoV", createdAt: "ค่าเริ่มต้น" },
+      { id: 3, text: "#RoV #ควิกแชทนี้พี่จัดให้ #หยุดโลกด้วยเสียง #GildurPASULOL", createdAt: "ค่าเริ่มต้น" },
+      { id: 4, text: "#RoV #Flowborn #ฮีโร่ใหม่RoV #FlowbornPreheat", createdAt: "ค่าเริ่มต้น" },
+      { id: 5, text: "#RoV #RoVเป็นเกมตลก #rovth", createdAt: "ค่าเริ่มต้น" },
+      { id: 6, text: "#RoV #RoVเป็นเกมตลก #fpy", createdAt: "ค่าเริ่มต้น" },
+      { id: 7, text: "#RoV #RoVเป็นเกมตลก #trending", createdAt: "ค่าเริ่มต้น" },
+      { id: 8, text: "#RoV #RoVเป็นเกมตลก #เล่นRoV", createdAt: "ค่าเริ่มต้น" },
+      { id: 9, text: "#RoV #RoVเป็นเกมตลก #RoVเกมภาพสวย", createdAt: "ค่าเริ่มต้น" },
+      { id: 10, text: "#RoV #rovth #คลิปRoV", createdAt: "ค่าเริ่มต้น" },
+      { id: 11, text: "#RoV #rovth #RoVThailand", createdAt: "ค่าเริ่มต้น" },
+      { id: 12, text: "#RoV #ควิกแชทนี้พี่จัดให้ #TeamKongInRoV", createdAt: "ค่าเริ่มต้น" },
+      { id: 13, text: "#RoV #RoVเรียกเพื่อนกลับบ้าน #CallbackRoV", createdAt: "ค่าเริ่มต้น" }
     ];
 
-    const tagsGrid = document.getElementById("tagsGrid");
-    const toast = document.getElementById("toast");
-    const copiedItems = new Set();
+    let notes = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [...defaultNotes];
+    const copiedSet = new Set();
 
     function showToast(message) {
       toast.textContent = message;
@@ -681,10 +445,38 @@
       clearTimeout(window.__toastTimer);
       window.__toastTimer = setTimeout(() => {
         toast.classList.remove("show");
-      }, 1800);
+      }, 1600);
     }
 
-    async function writeClipboard(text) {
+    function persist() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(notes));
+    }
+
+    function clearInput() {
+      input.value = "";
+      input.focus();
+    }
+
+    function saveNote() {
+      const text = input.value.trim();
+      if (!text) {
+        showToast("กรุณาใส่ข้อความก่อน");
+        return;
+      }
+
+      notes.push({
+        id: Date.now(),
+        text,
+        createdAt: new Date().toLocaleString("th-TH")
+      });
+
+      persist();
+      renderNotes();
+      input.value = "";
+      showToast("บันทึกข้อความแล้ว");
+    }
+
+    async function copyText(text, id) {
       try {
         await navigator.clipboard.writeText(text);
       } catch (e) {
@@ -695,79 +487,78 @@
         document.execCommand("copy");
         document.body.removeChild(area);
       }
+
+      copiedSet.add(id);
+      renderNotes();
+      showToast("คัดลอกแล้ว");
     }
 
-    async function copyItem(text, key) {
-      await writeClipboard(text);
-      copiedItems.add(key);
-      renderTags();
-      showToast("คัดลอกเรียบร้อยแล้ว");
+    function deleteNote(id) {
+      notes = notes.filter(note => note.id !== id);
+      copiedSet.delete(id);
+      persist();
+      renderNotes();
+      showToast("ลบข้อความแล้ว");
     }
 
-    function scrollToSection(id) {
-      const el = document.getElementById(id);
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
+    function resetDefault() {
+      localStorage.removeItem(STORAGE_KEY);
+      notes = [...defaultNotes];
+      copiedSet.clear();
+      persist();
+      renderNotes();
+      showToast("รีเซ็ตกลับค่าเริ่มต้นแล้ว");
     }
 
-    function refreshPageWithoutLosingData() {
+    function refreshPage() {
       location.reload();
     }
 
-    function renderTags() {
-      tagsGrid.innerHTML = "";
-      let globalCounter = 1;
-
-      tagGroups.forEach((group, groupIndex) => {
-        const groupTitle = document.createElement("div");
-        groupTitle.className = "divider-title";
-        groupTitle.textContent = group.label;
-        tagsGrid.appendChild(groupTitle);
-
-        if (group.items.length === 0) return;
-
-        group.items.forEach((item, itemIndex) => {
-          const key = `${groupIndex}-${itemIndex}`;
-          const isCopied = copiedItems.has(key);
-
-          const card = document.createElement("div");
-          card.className = "tag-card";
-
-          const label = document.createElement("div");
-          label.className = "tag-label";
-          label.innerHTML = `
-            แฮชแท็กที่ ${globalCounter}
-            <span class="copied-mark ${isCopied ? "show" : ""}">✅ คัดลอกแล้ว</span>
-          `;
-
-          const text = document.createElement("pre");
-          text.className = "tag-text";
-          text.textContent = item;
-
-          const actions = document.createElement("div");
-          actions.className = "tag-actions";
-
-          const button = document.createElement("button");
-          button.className = `btn btn-copy ${isCopied ? "copied" : ""}`;
-          button.textContent = isCopied
-            ? "✅ คัดลอกแล้ว"
-            : (item.startsWith("#") ? "คัดลอกชุดนี้" : "คัดลอกข้อความนี้");
-
-          button.addEventListener("click", () => copyItem(item, key));
-
-          actions.appendChild(button);
-          card.appendChild(label);
-          card.appendChild(text);
-          card.appendChild(actions);
-          tagsGrid.appendChild(card);
-
-          globalCounter++;
-        });
-      });
+    function escapeHtml(text) {
+      const div = document.createElement("div");
+      div.textContent = text;
+      return div.innerHTML;
     }
 
-    renderTags();
+    function copyTextById(id) {
+      const note = notes.find(n => n.id === id);
+      if (!note) return;
+      copyText(note.text, id);
+    }
+
+    function renderNotes() {
+      if (notes.length === 0) {
+        notesList.innerHTML = `<div class="empty-state">ยังไม่มีข้อความที่บันทึกไว้</div>`;
+        return;
+      }
+
+      notesList.innerHTML = notes.map((note, index) => `
+        <div class="note-card">
+          <div class="note-top">
+            <div class="note-label">
+              ชุด ${index + 1}
+              <span class="copied-mark ${copiedSet.has(note.id) ? "show" : ""}">✅ คัดลอกแล้ว</span>
+            </div>
+            <div class="note-time">${escapeHtml(note.createdAt || "-")}</div>
+          </div>
+
+          <p class="note-text">${escapeHtml(note.text)}</p>
+
+          <div class="note-actions">
+            <button class="btn btn-copy ${copiedSet.has(note.id) ? "copied" : ""}" onclick="copyTextById(${note.id})">
+              ${copiedSet.has(note.id) ? "✅ คัดลอกแล้ว" : "📋 คัดลอก"}
+            </button>
+            <button class="btn btn-delete" onclick="deleteNote(${note.id})">ลบ</button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    if (!localStorage.getItem(STORAGE_KEY)) {
+      persist();
+    }
+
+    renderNotes();
   </script>
 </body>
 </html>
