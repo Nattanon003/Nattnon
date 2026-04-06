@@ -3,412 +3,178 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>บันทึกข้อความของฉัน</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>บันทึกข้อความ</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
+
   <style>
-    :root{
-      --bg1:#020617;
-      --bg2:#0f172a;
-      --card:#111827;
-      --card2:#1e293b;
-      --line:rgba(255,255,255,.08);
-      --text:#f8fafc;
-      --muted:#94a3b8;
-      --green:#22c55e;
-      --blue:#3b82f6;
-      --red:#ef4444;
-      --gold:#f59e0b;
-      --shadow:0 18px 40px rgba(0,0,0,.35);
+    body {
+      margin: 0;
+      font-family: "Prompt", sans-serif;
+      background: linear-gradient(180deg,#020617,#0f172a);
+      color: white;
     }
 
-    *{
-      box-sizing:border-box;
-      -webkit-tap-highlight-color:transparent;
+    .container {
+      max-width: 700px;
+      margin: auto;
+      padding: 15px;
     }
 
-    body{
-      margin:0;
-      font-family:"Prompt",sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(circle at top right, rgba(59,130,246,.15), transparent 25%),
-        radial-gradient(circle at top left, rgba(245,158,11,.10), transparent 22%),
-        linear-gradient(180deg,var(--bg1),var(--bg2));
-      min-height:100vh;
+    h1 {
+      text-align: center;
+      color: gold;
     }
 
-    .container{
-      max-width:720px;
-      margin:auto;
-      padding:18px 14px 90px;
+    .card {
+      background: #1e293b;
+      padding: 15px;
+      border-radius: 16px;
+      margin: 10px 0;
     }
 
-    .hero{
-      background:linear-gradient(135deg, rgba(59,130,246,.12), rgba(245,158,11,.10));
-      border:1px solid var(--line);
-      border-radius:24px;
-      padding:20px;
-      box-shadow:var(--shadow);
-      margin-bottom:16px;
+    textarea {
+      width: 100%;
+      height: 120px;
+      border-radius: 10px;
+      border: none;
+      padding: 10px;
+      background: #0f172a;
+      color: white;
     }
 
-    .badge{
-      display:inline-block;
-      padding:6px 12px;
-      border-radius:999px;
-      background:rgba(245,158,11,.10);
-      border:1px solid rgba(245,158,11,.18);
-      color:#fde68a;
-      font-size:13px;
-      margin-bottom:10px;
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      margin-top: 8px;
+      font-weight: bold;
     }
 
-    h1{
-      margin:0;
-      font-size:28px;
-      line-height:1.2;
+    .save { background: #22c55e; }
+    .clear { background: #ef4444; }
+    .copy { background: #3b82f6; }
+    .copy.done { background: #22c55e; }
+    .delete { background: #ef4444; }
+    .reset { background: #f59e0b; }
+
+    .note {
+      background: #0f172a;
+      padding: 10px;
+      border-radius: 12px;
+      margin-top: 10px;
     }
 
-    .sub{
-      margin:10px 0 0;
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.8;
+    .badge {
+      font-size: 12px;
+      opacity: 0.7;
     }
 
-    .card{
-      background:linear-gradient(180deg, rgba(17,24,39,.95), rgba(15,23,42,.95));
-      border:1px solid var(--line);
-      border-radius:22px;
-      padding:16px;
-      box-shadow:var(--shadow);
-      margin-bottom:16px;
-    }
-
-    .title{
-      margin:0 0 12px;
-      font-size:18px;
-      font-weight:600;
-    }
-
-    textarea{
-      width:100%;
-      min-height:140px;
-      resize:vertical;
-      border:none;
-      outline:none;
-      border-radius:16px;
-      padding:14px;
-      font-family:inherit;
-      font-size:15px;
-      line-height:1.7;
-      color:var(--text);
-      background:rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.06);
-    }
-
-    .row{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:10px;
-      margin-top:12px;
-    }
-
-    .btn{
-      border:none;
-      border-radius:14px;
-      padding:13px 14px;
-      font-family:inherit;
-      font-size:14px;
-      font-weight:600;
-      cursor:pointer;
-      color:#fff;
-      transition:.18s ease;
-    }
-
-    .btn:active{
-      transform:scale(.98);
-    }
-
-    .btn-save{
-      background:linear-gradient(135deg, var(--green), #16a34a);
-    }
-
-    .btn-clear{
-      background:linear-gradient(135deg, var(--red), #dc2626);
-    }
-
-    .btn-copy{
-      background:linear-gradient(135deg, var(--blue), #2563eb);
-    }
-
-    .btn-copy.copied{
-      background:linear-gradient(135deg, var(--green), #16a34a);
-    }
-
-    .btn-delete{
-      background:linear-gradient(135deg, var(--red), #dc2626);
-    }
-
-    .btn-reset{
-      background:linear-gradient(135deg, var(--gold), #d97706);
-    }
-
-    .empty{
-      text-align:center;
-      color:var(--muted);
-      padding:16px;
-      border:1px dashed rgba(255,255,255,.1);
-      border-radius:16px;
-      font-size:14px;
-    }
-
-    .note-card{
-      padding:14px;
-      border-radius:18px;
-      background:linear-gradient(180deg, rgba(30,41,59,.95), rgba(17,24,39,.95));
-      border:1px solid rgba(255,255,255,.07);
-      margin-bottom:12px;
-    }
-
-    .note-top{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      margin-bottom:10px;
-      flex-wrap:wrap;
-    }
-
-    .note-badge{
-      font-size:12px;
-      color:#cbd5e1;
-      background:rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.06);
-      padding:6px 10px;
-      border-radius:999px;
-    }
-
-    .note-text{
-      white-space:pre-wrap;
-      word-break:break-word;
-      color:#f8fafc;
-      font-size:15px;
-      line-height:1.8;
-      margin:0;
-    }
-
-    .note-actions{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:10px;
-      margin-top:12px;
-    }
-
-    .extra-actions{
-      margin-top:12px;
-    }
-
-    .toast{
-      position:fixed;
-      left:50%;
-      bottom:20px;
-      transform:translateX(-50%) translateY(20px);
-      background:rgba(15,23,42,.96);
-      border:1px solid rgba(255,255,255,.08);
-      color:#fff;
-      padding:12px 16px;
-      border-radius:999px;
-      font-size:14px;
-      opacity:0;
-      pointer-events:none;
-      transition:.22s ease;
-      z-index:999;
-      box-shadow:var(--shadow);
-    }
-
-    .toast.show{
-      opacity:1;
-      transform:translateX(-50%) translateY(0);
-    }
-
-    @media (min-width:640px){
-      .row{
-        grid-template-columns:1fr 1fr;
-      }
-    }
   </style>
 </head>
+
 <body>
-  <div class="container">
-    <section class="hero">
-      <div class="badge">📝 เว็บบันทึกข้อความส่วนตัว</div>
-      <h1>เพิ่มข้อความ แล้วกดคัดลอกได้ทันที</h1>
-      <p class="sub">
-        ใช้เก็บข้อความ แคปชัน แฮชแท็ก หรือข้อความอะไรก็ได้<br>
-        ข้อมูลจะถูกบันทึกไว้ในเครื่องของคุณด้วย localStorage
-      </p>
-    </section>
+<div class="container">
 
-    <section class="card">
-      <h2 class="title">เพิ่มข้อความใหม่</h2>
-      <textarea id="noteInput" placeholder="พิมพ์ข้อความที่ต้องการบันทึกตรงนี้..."></textarea>
-      <div class="row">
-        <button class="btn btn-save" onclick="saveNote()">💾 บันทึกข้อความ</button>
-        <button class="btn btn-clear" onclick="clearInput()">🗑️ ล้างช่องพิมพ์</button>
+<h1>📋 บันทึกข้อความ</h1>
+
+<div class="card">
+  <textarea id="input" placeholder="พิมพ์ข้อความ..."></textarea>
+  <button class="save" onclick="add()">บันทึก</button>
+  <button class="clear" onclick="clearInput()">ล้าง</button>
+  <button class="reset" onclick="reset()">รีเซ็ต 13 แฮชแท็ก</button>
+</div>
+
+<div id="list"></div>
+
+</div>
+
+<script>
+const KEY = "notes_v2";
+
+const defaultData = [
+"#RoV #คลิปRoV #rovth",
+"#RoV #RoVเป็นเกมตลก #คลิปRoV",
+"#RoV #ควิกแชทนี้พี่จัดให้ #หยุดโลกด้วยเสียง #GildurPASULOL",
+"#RoV #Flowborn #ฮีโร่ใหม่RoV #FlowbornPreheat",
+"#RoV #RoVเป็นเกมตลก #rovth",
+"#RoV #RoVเป็นเกมตลก #fpy",
+"#RoV #RoVเป็นเกมตลก #trending",
+"#RoV #RoVเป็นเกมตลก #เล่นRoV",
+"#RoV #RoVเป็นเกมตลก #RoVเกมภาพสวย",
+"#RoV #rovth #คลิปRoV",
+"#RoV #rovth #RoVThailand",
+"#RoV #ควิกแชทนี้พี่จัดให้ #TeamKongInRoV",
+"#RoV #RoVเรียกเพื่อนกลับบ้าน #CallbackRoV"
+];
+
+let notes = JSON.parse(localStorage.getItem(KEY)) || defaultData;
+let copied = new Set();
+
+function save() {
+  localStorage.setItem(KEY, JSON.stringify(notes));
+}
+
+function add() {
+  let val = input.value.trim();
+  if (!val) return;
+
+  notes.unshift(val); // ใหม่อยู่บนสุด
+  input.value = "";
+  save();
+  render();
+}
+
+function clearInput() {
+  input.value = "";
+}
+
+function remove(i) {
+  notes.splice(i,1);
+  save();
+  render();
+}
+
+function copyText(text, i) {
+  navigator.clipboard.writeText(text);
+  copied.add(i);
+  render();
+}
+
+function reset() {
+  localStorage.removeItem(KEY);
+  notes = [...defaultData];
+  copied.clear();
+  render();
+}
+
+function render() {
+  list.innerHTML = "";
+
+  if (notes.length === 0) {
+    list.innerHTML = "<p>ไม่มีข้อมูล</p>";
+    return;
+  }
+
+  notes.forEach((t,i)=>{
+    list.innerHTML += `
+      <div class="card">
+        <div class="badge">ชุด ${i+1}</div>
+        <div class="note">${t}</div>
+
+        <button class="copy ${copied.has(i) ? 'done':''}" onclick="copyText(\`${t}\`,${i})">
+          ${copied.has(i) ? '✅ คัดลอกแล้ว' : 'คัดลอก'}
+        </button>
+
+        <button class="delete" onclick="remove(${i})">ลบ</button>
       </div>
-      <div class="extra-actions">
-        <button class="btn btn-reset" onclick="resetDefault()">♻️ รีเซ็ตกลับค่าเริ่มต้น 13 อัน</button>
-      </div>
-    </section>
+    `;
+  });
+}
 
-    <section class="card">
-      <h2 class="title">ข้อความที่บันทึกไว้</h2>
-      <div id="notesList"></div>
-    </section>
-  </div>
+render();
+</script>
 
-  <div id="toast" class="toast">บันทึกแล้ว</div>
-
-  <script>
-    const STORAGE_KEY = "my_saved_notes_v1";
-    const input = document.getElementById("noteInput");
-    const notesList = document.getElementById("notesList");
-    const toast = document.getElementById("toast");
-
-    const defaultNotes = [
-      { id: 1, text: "#RoV #คลิปRoV #rovth", createdAt: "ค่าเริ่มต้น" },
-      { id: 2, text: "#RoV #RoVเป็นเกมตลก #คลิปRoV", createdAt: "ค่าเริ่มต้น" },
-      { id: 3, text: "#RoV #ควิกแชทนี้พี่จัดให้ #หยุดโลกด้วยเสียง #GildurPASULOL", createdAt: "ค่าเริ่มต้น" },
-      { id: 4, text: "#RoV #Flowborn #ฮีโร่ใหม่RoV #FlowbornPreheat", createdAt: "ค่าเริ่มต้น" },
-      { id: 5, text: "#RoV #RoVเป็นเกมตลก #rovth", createdAt: "ค่าเริ่มต้น" },
-      { id: 6, text: "#RoV #RoVเป็นเกมตลก #fpy", createdAt: "ค่าเริ่มต้น" },
-      { id: 7, text: "#RoV #RoVเป็นเกมตลก #trending", createdAt: "ค่าเริ่มต้น" },
-      { id: 8, text: "#RoV #RoVเป็นเกมตลก #เล่นRoV", createdAt: "ค่าเริ่มต้น" },
-      { id: 9, text: "#RoV #RoVเป็นเกมตลก #RoVเกมภาพสวย", createdAt: "ค่าเริ่มต้น" },
-      { id: 10, text: "#RoV #rovth #คลิปRoV", createdAt: "ค่าเริ่มต้น" },
-      { id: 11, text: "#RoV #rovth #RoVThailand", createdAt: "ค่าเริ่มต้น" },
-      { id: 12, text: "#RoV #ควิกแชทนี้พี่จัดให้ #TeamKongInRoV", createdAt: "ค่าเริ่มต้น" },
-      { id: 13, text: "#RoV #RoVเรียกเพื่อนกลับบ้าน #CallbackRoV", createdAt: "ค่าเริ่มต้น" }
-    ];
-
-    let notes = JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultNotes;
-    const copiedSet = new Set();
-
-    function showToast(message) {
-      toast.textContent = message;
-      toast.classList.add("show");
-      clearTimeout(window.__toastTimer);
-      window.__toastTimer = setTimeout(() => {
-        toast.classList.remove("show");
-      }, 1600);
-    }
-
-    function persist() {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(notes));
-    }
-
-    function clearInput() {
-      input.value = "";
-      input.focus();
-    }
-
-    function saveNote() {
-      const text = input.value.trim();
-      if (!text) {
-        showToast("กรุณาใส่ข้อความก่อน");
-        return;
-      }
-
-      notes.unshift({
-        id: Date.now(),
-        text,
-        createdAt: new Date().toLocaleString("th-TH")
-      });
-
-      persist();
-      renderNotes();
-      input.value = "";
-      showToast("บันทึกข้อความแล้ว");
-    }
-
-    async function copyText(text, id) {
-      try {
-        await navigator.clipboard.writeText(text);
-      } catch (e) {
-        const area = document.createElement("textarea");
-        area.value = text;
-        document.body.appendChild(area);
-        area.select();
-        document.execCommand("copy");
-        document.body.removeChild(area);
-      }
-
-      copiedSet.add(id);
-      renderNotes();
-      showToast("คัดลอกแล้ว");
-    }
-
-    function deleteNote(id) {
-      notes = notes.filter(note => note.id !== id);
-      copiedSet.delete(id);
-      persist();
-      renderNotes();
-      showToast("ลบข้อความแล้ว");
-    }
-
-    function resetDefault() {
-      localStorage.removeItem(STORAGE_KEY);
-      notes = [...defaultNotes];
-      copiedSet.clear();
-      renderNotes();
-      showToast("รีเซ็ตกลับค่าเริ่มต้นแล้ว");
-    }
-
-    function renderNotes() {
-      if (notes.length === 0) {
-        notesList.innerHTML = `<div class="empty">ยังไม่มีข้อความที่บันทึกไว้</div>`;
-        return;
-      }
-
-      notesList.innerHTML = notes.map((note, index) => `
-        <div class="note-card">
-          <div class="note-top">
-            <span class="note-badge">ข้อความที่ ${notes.length - index}</span>
-            <span class="note-badge">${escapeHtml(note.createdAt || "-")}</span>
-          </div>
-
-          <p class="note-text">${escapeHtml(note.text)}</p>
-
-          <div class="note-actions">
-            <button class="btn btn-copy ${copiedSet.has(note.id) ? 'copied' : ''}" onclick="copyTextById(${note.id})">
-              ${copiedSet.has(note.id) ? '✅ คัดลอกแล้ว' : '📋 คัดลอก'}
-            </button>
-            <button class="btn btn-delete" onclick="deleteNote(${note.id})">ลบ</button>
-          </div>
-        </div>
-      `).join("");
-    }
-
-    function copyTextById(id) {
-      const note = notes.find(n => n.id === id);
-      if (!note) return;
-      copyText(note.text, id);
-    }
-
-    function escapeHtml(text) {
-      const div = document.createElement("div");
-      div.textContent = text;
-      return div.innerHTML;
-    }
-
-    if (!localStorage.getItem(STORAGE_KEY)) {
-      persist();
-    }
-
-    renderNotes();
-  </script>
 </body>
 </html>
