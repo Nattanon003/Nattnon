@@ -6,32 +6,52 @@
 <title>Creator RoV</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap');
+
 body {
   margin: 0;
   font-family: 'Prompt', sans-serif;
-  background: linear-gradient(180deg, #0f172a, #020617);
+  background: linear-gradient(180deg, #020617, #0f172a);
   color: white;
 }
 
 .container {
-  padding: 15px;
   max-width: 500px;
   margin: auto;
+  padding: 15px;
 }
 
-h1 {
+.header {
   text-align: center;
+  margin-bottom: 20px;
+}
+
+.header h1 {
   color: gold;
+  margin: 0;
+}
+
+.header p {
+  opacity: 0.7;
+  margin: 5px 0;
 }
 
 .card {
   background: #1e293b;
   padding: 15px;
-  border-radius: 12px;
-  margin: 10px 0;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
 }
 
-button {
+.title {
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #38bdf8;
+}
+
+.copy-btn {
+  margin-top: 10px;
   width: 100%;
   padding: 10px;
   border: none;
@@ -39,27 +59,18 @@ button {
   background: #22c55e;
   color: white;
   font-weight: bold;
-  margin-top: 10px;
 }
 
-.copyAll {
+.copy-all {
   background: #f59e0b;
+  margin-bottom: 10px;
 }
 
-.adminBtn {
-  background: #3b82f6;
-}
-
-input, textarea {
-  width: 100%;
-  padding: 10px;
-  border-radius: 10px;
-  border: none;
-  margin: 5px 0;
-}
-
-.hidden {
-  display: none;
+.badge {
+  background: #22c55e;
+  padding: 3px 8px;
+  border-radius: 8px;
+  font-size: 12px;
 }
 </style>
 </head>
@@ -68,104 +79,83 @@ input, textarea {
 
 <div class="container">
 
-<h1>Creator RoV</h1>
+<div class="header">
+  <h1>🎮 Creator RoV</h1>
+  <p>By FB : Naa Non</p>
+</div>
 
-<!-- ขั้นตอน -->
-<h3>📌 ขั้นตอน</h3>
-<div id="steps"></div>
+<div class="card">
+  <div class="title">📌 วิธีทำกิจกรรม</div>
+  <p>✅ ทำตามนี้ทีละข้อ</p>
 
-<!-- แฮชแท็ก -->
-<h3>📌 แฮชแท็ก</h3>
-<button class="copyAll" onclick="copyAll()">คัดลอกทั้งหมด</button>
-<div id="hashtags"></div>
+  <p><b>1️⃣ เชื่อมบัญชี TikTok</b><br>
+  เข้าไปตั้งค่าบัญชีในกิจกรรม แล้วเชื่อม TikTok ให้เรียบร้อย</p>
 
-<!-- ปุ่ม admin -->
-<button class="adminBtn" onclick="toggleAdmin()">⚙️ Admin</button>
+  <p><b>2️⃣ ลงคลิป + ใส่แฮชแท็ก</b><br>
+  ลงคลิปตามจำนวน และใส่แฮชแท็กให้ครบ</p>
 
-<!-- Admin Panel -->
-<div id="admin" class="hidden">
+  <p>📌 <span class="badge">จำนวนคลิป</span><br>
+  800 = 11 คลิป<br>
+  1000 = 16 คลิป<br>
+  1100 = 19 คลิป</p>
 
-<h3>➕ เพิ่มขั้นตอน</h3>
-<input id="stepTitle" placeholder="หัวข้อ">
-<textarea id="stepDesc" placeholder="รายละเอียด"></textarea>
-<button onclick="addStep()">เพิ่มขั้นตอน</button>
+  <p><b>3️⃣ ส่งลิ้ง TikTok</b><br>
+  ส่งโปรไฟล์ หรือคลิปอย่างน้อย 1 คลิป</p>
 
-<h3>➕ เพิ่มแฮชแท็ก</h3>
-<textarea id="tagInput" placeholder="#RoV #rovth"></textarea>
-<button onclick="addTag()">เพิ่มแฮชแท็ก</button>
+  <p><b>4️⃣ เพิ่มคลิปในกิจกรรม</b><br>
+  กดเพิ่มคลิปอัตโนมัติให้ครบทุกคลิป</p>
+
+  <p><b>5️⃣ แลกรางวัล</b><br>
+  รับแต้มครบแล้วไปแลกคูปอง 🎁</p>
 
 </div>
+
+<div class="card">
+  <div class="title">📌 วิธีลงคลิป</div>
+  <p>
+  1. ลงคลิป + ใส่แฮชแท็ก<br>
+  2. รอ 30-60 นาที<br>
+  3. ส่งลิ้ง<br>
+  4. เพิ่มคลิปในระบบ<br>
+  5. รอปั้มวิว<br>
+  6. รีเฟรชรับของ
+  </p>
+</div>
+
+<button class="copy-btn copy-all" onclick="copyAll()">📋 คัดลอกทั้งหมด</button>
+
+<div id="hashtags"></div>
 
 </div>
 
 <script>
 
-let data = JSON.parse(localStorage.getItem("rovData")) || {
-  steps: [
-    {title: "เชื่อม TikTok", desc: "เชื่อมบัญชี TikTok กับเกมก่อนเริ่ม"}
-  ],
-  hashtags: [
-    "#RoV #คลิปRoV #rovth"
-  ]
-};
+const hashtags = [
+"#RoV #คลิปRoV #rovth",
+"#RoV #RoVเป็นเกมตลก #คลิปRoV",
+"#RoV #ควิกแชทนี้พี่จัดให้ #หยุดโลกด้วยเสียง #GildurPASULOL",
+"#RoV #Flowborn #ฮีโร่ใหม่RoV #FlowbornPreheat",
+"#RoV #RoVเป็นเกมตลก #rovth",
+"#RoV #RoVเป็นเกมตลก #fpy",
+"#RoV #RoVเป็นเกมตลก #trending",
+"#RoV #RoVเป็นเกมตลก #เล่นRoV",
+"#RoV #RoVเป็นเกมตลก #RoVเกมภาพสวย",
+"#RoV #rovth #คลิปRoV",
+"#RoV #rovth #RoVThailand",
+"#RoV #ควิกแชทนี้พี่จัดให้ #TeamKongInRoV",
+"#RoV #RoVเรียกเพื่อนกลับบ้าน #CallbackRoV"
+];
 
-function save() {
-  localStorage.setItem("rovData", JSON.stringify(data));
-  render();
-}
+const container = document.getElementById("hashtags");
 
-function render() {
-
-  let stepsHTML = "";
-  data.steps.forEach((s, i) => {
-    stepsHTML += `
-      <div class="card">
-        <h4>${s.title}</h4>
-        <p>${s.desc}</p>
-        <button onclick="deleteStep(${i})">ลบ</button>
-      </div>
-    `;
-  });
-  document.getElementById("steps").innerHTML = stepsHTML;
-
-  let tagHTML = "";
-  data.hashtags.forEach((t, i) => {
-    tagHTML += `
-      <div class="card">
-        <p>${t}</p>
-        <button onclick="copyText('${t}')">คัดลอก</button>
-        <button onclick="deleteTag(${i})">ลบ</button>
-      </div>
-    `;
-  });
-  document.getElementById("hashtags").innerHTML = tagHTML;
-}
-
-function addStep() {
-  data.steps.push({
-    title: stepTitle.value,
-    desc: stepDesc.value
-  });
-  stepTitle.value = "";
-  stepDesc.value = "";
-  save();
-}
-
-function addTag() {
-  data.hashtags.push(tagInput.value);
-  tagInput.value = "";
-  save();
-}
-
-function deleteStep(i) {
-  data.steps.splice(i,1);
-  save();
-}
-
-function deleteTag(i) {
-  data.hashtags.splice(i,1);
-  save();
-}
+hashtags.forEach(tag => {
+  container.innerHTML += `
+    <div class="card">
+      <p>${tag}</p>
+      <button class="copy-btn" onclick="copyText('${tag}')">คัดลอก</button>
+    </div>
+  `;
+});
 
 function copyText(text) {
   navigator.clipboard.writeText(text);
@@ -173,16 +163,9 @@ function copyText(text) {
 }
 
 function copyAll() {
-  let all = data.hashtags.join("\n");
-  navigator.clipboard.writeText(all);
+  navigator.clipboard.writeText(hashtags.join("\n"));
   alert("คัดลอกทั้งหมดแล้ว!");
 }
-
-function toggleAdmin() {
-  document.getElementById("admin").classList.toggle("hidden");
-}
-
-render();
 
 </script>
 
